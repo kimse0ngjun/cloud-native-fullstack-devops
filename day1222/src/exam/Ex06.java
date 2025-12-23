@@ -13,6 +13,7 @@ public class Ex06 {
 		System.out.print("세 개의 정수를 입력하세요: ");
 		Scanner sc = new Scanner(System.in);
 		
+		// 1
 		int a = sc.nextInt();
 		int b = sc.nextInt();
 		int c = sc.nextInt();

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Ex01 {
 	public static void main(String[] args) {
+		
 		/*
 		 * 문제1. 아래와 같이 출력하는 자바프로그램을 작성하시오.
 			- 출력예 -

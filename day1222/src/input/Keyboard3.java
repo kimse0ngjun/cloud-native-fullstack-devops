@@ -30,7 +30,7 @@ public class Keyboard3 {
 		System.out.println("입력하신 생년월일은 " + year + "년 " + month + "월 " + day + "일생입니다.");
 		
 		// 3
-//		String year = sc1.nextLine();
+//		String year = sc1.nextLine(); // API 문서로 확인가능
 //		String month = sc1.nextLine();
 //		String day = sc1.nextLine();
 	}

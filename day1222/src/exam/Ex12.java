@@ -17,8 +17,9 @@ public class Ex12 {
 		double height = Double.parseDouble(sc2.nextLine());
 		
 		
-		double result = (double) (weight/(height * height));
-		String str = String.format("%.1f", result);
+		double bmi = (double) (weight/(height * height));
+//		double bmi = Double.parseDouble(weight)/(Double.parseDouble(height)*Double.parseDouble(height));
+		String str = String.format("%.1f", bmi);
 		System.out.println(name + "님의 bmi는 " + str + "입니다");
 		
 	}
