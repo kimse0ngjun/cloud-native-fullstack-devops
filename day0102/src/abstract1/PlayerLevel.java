@@ -2,7 +2,7 @@ package abstract1;
 
 public abstract class PlayerLevel { // 추상 클래스
 
-	public abstract void run();
+	public abstract void run(); 
 	public abstract void jump();
 	public abstract void turn();
 	public abstract void showLevelMessage();
