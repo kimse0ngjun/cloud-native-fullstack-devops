@@ -8,6 +8,7 @@ public class FactoryRun {
 //		CarFactory<Boat> carFactory3 = new CarFactory<Boat>(); // Car에서 상속 받은것들만 생성 가능
 
 		CarFactory<Car> carFactory2 = new CarFactory<Car>();
+//		CarFactory<Car> carFactory3 = new CarFactory<>(); // 앞에 타입을 선언했을 경우 뒤에 타입은 생략 가능
 		AutoCar car = new AutoCar("홍카");
 		carFactory2.fixCar(car);
 		
