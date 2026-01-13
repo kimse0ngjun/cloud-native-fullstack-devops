@@ -1,0 +1,22 @@
+package inherit1;
+
+public class PromotionRun {
+
+	public static void main(String[] args) {
+		
+		B b = new B();
+		C c = new C();
+		D d = new D();
+		E e = new E();
+		
+		A a1 = b; // b 클래스가 A 클래스로 자동 형변환
+		A a2 = c;
+		A a3 = d;
+		A a4 = e;
+		
+		B b1 = d; // a -> b -> d 
+		C c1 = e; // a -> c -> e
+		
+	}
+
+}
