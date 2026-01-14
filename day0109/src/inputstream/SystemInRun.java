@@ -6,7 +6,11 @@ public class SystemInRun {
 
 	public static void main(String[] args) throws IOException { // 예외처리 방법 1
 
-		System.out.println("알파벳 하나를 쓰고 [Enter]를 누르세요.");
+		try {
+			System.out.println("알파벳 하나를 쓰고 [Enter]를 누르세요.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		int i;
 		

@@ -1,16 +1,16 @@
 package ploy;
 
-public class HankookTire extends Tire {
-	
-	public HankookTire(int maxRotation, String location) { // 부모 생성자의 형태를 잘봐야함
+public class KumhoTire extends Tire {
+
+	public KumhoTire(int maxRotation, String location) {
 		super(maxRotation, location);
 	}
-	
+
 	@Override
 	public boolean roll() {
 		accumulationRotation++;
 		if (accumulationRotation < maxRotation) {
-			System.out.println(location + "HankookTire 수명 : " +  
+			System.out.println(location + "kumhoTire 수명 : " +  
 		(maxRotation - accumulationRotation) + "회");
 			return true;
 		} else {
