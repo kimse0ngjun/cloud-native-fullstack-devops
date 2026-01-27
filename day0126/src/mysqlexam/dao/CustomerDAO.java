@@ -59,7 +59,8 @@ public class CustomerDAO {
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		
-		String query = "INSERT INTO customers(cust_id, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country, cust_contact, cust_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO customers(cust_id, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country, cust_contact, cust_email)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		int rs = 0;
 		
@@ -77,7 +78,7 @@ public class CustomerDAO {
 			pstm.setString(8, dto.getCustContact());
 			pstm.setString(9, dto.getCustEmail());
 		
-			rs = pstm.executeUpdate();
+			rs = pstm.executeUpdate(); // 1
 			
 		} catch (Exception e) {
 			e.printStackTrace();

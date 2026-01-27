@@ -136,7 +136,6 @@ public class DeptDAO {
 			conn = DBUtil.getConnection();
 			pstmt1 = conn.prepareStatement(query);
 			
-			// ? 순서에 맞게 값 입력
 			pstmt1.setInt(1, deptno);
 			
 			result = pstmt1.executeUpdate();
