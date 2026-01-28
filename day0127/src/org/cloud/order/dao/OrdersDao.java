@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -144,6 +145,109 @@ public class OrdersDao {
 		}
 		
 		return 0; 
+	}
+	
+	 // search
+	public List<OrdersDto> search2(OrdersDto dto) {
+		
+		List<OrdersDto> searchList = new ArrayList<OrdersDto>();
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		
+		String query = "SELECT * FROM orders Where order_num LIKE CONCAT('%', ?, '%') OR order_date LIKE ?;";
+		
+		try {
+			conn = DBUtil.getConnection();
+			pstm = conn.prepareStatement(query);
+			
+			pstm.setInt(1, Integer.valueOf(dto.getOrderNum()) != null ? dto.getOrderNum() : 0);
+			pstm.setTimestamp(2, Timestamp.valueOf(dto.getOrderDate()));
+			
+			rs = pstm.executeQuery();
+			
+			while (rs.next()) {
+				dto.setOrderNum(rs.getInt("order_num"));
+				dto.setOrderDate(rs.getTimestamp("order_date").toLocalDateTime());
+				dto.setCustId(rs.getString("cust_id"));
+				
+				searchList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstm != null) pstm.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return searchList;
+		
+	}
+	
+	public List<OrdersDto> search(OrdersDto dto) {
+
+	    List<OrdersDto> searchList = new ArrayList<>();
+
+	    Connection conn = null;
+	    PreparedStatement pstm = null;
+	    ResultSet rs = null;
+
+	    StringBuilder query = new StringBuilder();
+	    query.append("SELECT order_num, order_date FROM orders WHERE 1=1 ");
+
+	    if (dto.getOrderNum() != 0) {
+	        query.append(" AND CAST(order_num AS CHAR) LIKE ? ");
+	    }
+
+	    if (dto.getOrderDate() != null) {
+	        query.append(" AND DATE_FORMAT(order_date, '%Y-%m-%d') LIKE ? ");
+	    }
+
+	    try {
+	        conn = DBUtil.getConnection();
+	        pstm = conn.prepareStatement(query.toString());
+
+	        int idx = 1;
+
+	        if (dto.getOrderNum() != 0) {
+	            pstm.setString(idx++, "%" + dto.getOrderNum() + "%");
+	        }
+
+	        if (dto.getOrderDate() != null) {
+	            String dateStr = dto.getOrderDate().toLocalDate().toString(); // YYYY-MM-DD
+	            pstm.setString(idx++, "%" + dateStr + "%");
+	        }
+
+	        rs = pstm.executeQuery();
+
+	        while (rs.next()) {
+	            OrdersDto temp = new OrdersDto();
+
+	            temp.setOrderNum(rs.getInt("order_num"));
+	            temp.setOrderDate(rs.getTimestamp("order_date").toLocalDateTime());
+
+	            searchList.add(temp);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (pstm != null) pstm.close();
+	            if (conn != null) conn.close();
+	        } catch (Exception e2) {
+	            e2.printStackTrace();
+	        }
+	    }
+
+	    return searchList;
 	}
 	
 }
