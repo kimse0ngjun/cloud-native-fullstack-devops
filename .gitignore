@@ -4,3 +4,9 @@ bin/
 target/
 *.class
 *.log
+
+
+Servers/
+.recommenders/
+.project
+.classpath
