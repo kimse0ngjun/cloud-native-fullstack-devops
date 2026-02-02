@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>버튼</title>
+</head>
+<body>
+	<form action="#">
+		<fieldset>
+			<legend>반품정보</legend>
+			<h1>반품 정보</h1>
+			<p>만일 수령한 상품에 문제가 있다면 즉시<b>반품 신청</b>해 주세요.</p>
+			<p>반품 신청시 상품의 상태를 사진으로 첨부해 주세요.</p>
+			<input type="file">
+			<hr>
+			<input type="submit" value="반품하기">
+			<input type="reset" value="취소하기">
+		</fieldset>
+		
+		<fieldset>
+			<legend>웹 폼</legend>
+			<h1>웹 폼(버튼)</h1> <!-- _blank <- 새 창 열기 -->
+			<!-- 1 -->
+			<input type="button" value="공지 창 열기" onclick="window.open('notice.html', '_blank')">
+			<input type="image" src="images/login.png" alt="login.png">
+			<!-- 2 -->
+			<button type="button" onclick="window.open('notice.html', '_blank')">
+				<img src="images/login.png" alt="login.png">
+			</button>
+			
+		</fieldset>
+	</form>
+</body>
+</html>

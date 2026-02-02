@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#container {
+	width: 480px;
+	margin: 40px auto;
+}
+
+h1 {
+	font-size: 2em; /* 1em : 16px */
+	margin: 10px;
+}
+
+fieldset {
+	padding: 15px;
+}
+
+fieidset input {
+	font-weight: bold;
+}
+
+ul {
+	list-style: none;
+	padding-left: 5px;
+	
+}
+
+li {
+	margin: 10px;
+}
+
+#shipping li label {
+	width: 80px;
+	float: left;
+	text-align: left;
+}
+
+input[type="text"], [type="tel"], [type="email"], [type="memo"] {
+	width: 300px;
+}
+
+form > div {
+	margin-top: 30px;
+	display: flex; /* 부모 form에 따라서 정렬 */
+	justify-content: space-around; /* display 적용 후 justify-content 적용해야됨 */
+}
+
+form > div > input[type="submit"], input[type="reset"] {
+	text-align: center;
+	width: 150px;
+	height: 40px;
+	background-color: #fafafa;
+	border: 1px solid #cccccc;
+	box-shadow: 1px 3px 1px #cccccc;
+}

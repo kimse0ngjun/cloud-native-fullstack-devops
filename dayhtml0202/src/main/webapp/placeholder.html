@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width-device-width, initial-scale=1.0">
+<title>주문</title>
+<link rel="stylesheet" href="static/css/order.css">
+</head>
+<body>
+	<div id="container">
+		<h1>레드향 주문하기</h1>
+		<form action="#" method = "post">
+			<fieldset>
+				<legend>배송 정보</legend>
+				<ul>
+					<li>
+						<label for = "prod" id = "prod">주문상품</label>
+						<input type = "text" id = "prod" value="상품명 3KG" readonly> 
+					</li>
+					<li>
+						<label for = "name" id = "name">이름</label>
+						<input type = "text" id = "name" name = "name" autofocus required> 
+					</li>
+					<li>
+						<label for = "addr" id = "addr">배송주소</label>
+						<input type = "text" id = "text" name = "text" autofocus required> 
+					</li>
+					<li>
+						<label for = "mail" id = "mail">이메일</label>
+						<input type = "email" id = "email" name = "email" required> 
+					</li>
+					<li>
+						<label for = "tel" id = "tel">연락처</label>
+						<input type = "tel" id = "tel" name = "tel" placeholder="하이폰 빼고 입력해주세요. (01012345678)"> 
+					</li>
+					<li>
+						<label for = "dDay" id = "dDay">배송 지정</label>
+						<input type = "date" id = "dDay" name = "dDay"> <small>(주문일로부터 최소 3일 이후)</small>
+					</li>
+					<li>
+						<label for = "memo" id = "memo">배송 지정</label>
+						<textarea id = "memo" id = "memo" cols = "30" rows="5"></textarea>
+						<small>(주문일로부터 최소 3일 이후)</small>
+					</li>	
+				</ul>
+			</fieldset>
+			<div id = "buttons">
+				<input type="submit" value="주문하기">
+				<input type="reset" value="취소하기">
+			</div>
+		</form>
+	</div>
+</body>
+</html>
