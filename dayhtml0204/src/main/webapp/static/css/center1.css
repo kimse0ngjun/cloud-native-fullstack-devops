@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: url("../../static/images/bg5.jpg") no-repeat left top fixed;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>object-fit</title>
+<style>
+	body {
+		display: flex; /*화면 배치*/
+		flex-wrap: wrap;
+		justify-content: space-around;
+		gap: 5px;
+	}
+	
+	.container{
+		width: 200px;
+		height: 400px;
+		border: 3px solid #000;
+	}
+	
+	img {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.fill {
+		object-fit: fill;
+	}
+	
+	.contain { 
+		object-fit: contain;
+	}
+	
+	.cover {
+		object-fit: cover;
+	}
+	
+	.none {
+		object-fit: none;
+	}
+	
+	.scale-down {
+		object-fit: scale-down;
+	}
+</style> 
+</head>
+<body>
+	<div class="container">
+		<img src= "static/images/cat.png" alt="cat.png" class="fill">
+		<h3>object-fit: fill</h3>
+	</div>
+	
+	<div class="container">
+		<img src= "static/images/cat.png" alt="cat.png" class="contain">
+		<h3>object-fit: contain</h3>
+	</div>
+	
+	<div class="container">
+		<img src= "static/images/cat.png" alt="cat.png" class="cover">
+		<h3>object-fit: cover</h3>
+	</div>
+	
+	<div class="container">
+		<img src= "static/images/cat.png" alt="cat.png" class="none">
+		<h3>object-fit: none</h3>
+	</div>
+	
+	<div class="container">
+		<img src= "static/images/cat.png" alt="cat.png" class="scale-down">
+		<h3>object-fit: scale-down</h3>
+	</div>
+</body>
+</html>

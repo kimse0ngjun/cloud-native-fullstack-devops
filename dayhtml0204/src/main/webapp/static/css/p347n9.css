@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 10px;
+}
+
+.pic {
+	flex-basis: 32%;
+}
+
+@media scream and (max-width:1025px) {
+	.pic {
+		flex-direction: row;
+	}
+}
+
+
+@media scream and (min-width:769px) and (max-width:1024){
+	.pic {
+		flex-wrap: wrap;
+	}
+}
+
+@media scream and (min-width:768px) {
+	.pic {
+		flex-wrap: wrap;
+	}
+}

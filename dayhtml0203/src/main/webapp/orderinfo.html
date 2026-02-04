@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예약 정보</title> <!-- p166 내부스타일 활용해서 완성 -->
+<style>
+	form {
+		border: 2px solid black;
+		padding: 5px;
+		width: 600px;
+	}
+	
+	form > h1 {
+		padding-left: 10px;
+		
+	}
+	
+	form > ul > li {
+		margin: 10px;
+		list-style: none;
+	}
+	
+	input[type="text"], [type="number"], [type="email"]{
+		width: 150px;
+		margin: 3px;
+		border: 1px solid #ccc;
+		text-align: left;
+	}
+	
+	form > ul > li > label {
+		display: inline-black;
+		width: 80px;
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<form>
+	<h1>예약 정보</h1>
+	<ul>
+		<li>
+			<label for = "r-name" id = "r-name">이 름</label>
+			<input type = "text" id = "r-name" name = "r-name">
+		</li>		
+		<li>
+			<label for = "r-phone" id = "r-phone">전 화</label>
+			<input type = "number" id = "r-phone" name = "r-phone">
+		</li>		
+		<li>
+			<label for = "r-email" id = "r-email">이메일</label>
+			<input type = "email" id = "r-email" name = "r-email">
+		</li>		
+		<li>
+			<input type = "button" value="예약하기" >
+		</li>
+	</ul>
+</form>
+</body>
+</html>
