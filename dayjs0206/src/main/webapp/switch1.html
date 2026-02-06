@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="static/css/switch1.css">
+</head>
+<body>
+	<script>
+		let session = prompt("관심 세션을 선택해주세요. 1-마케팅, 2-개발, 3-디자인")
+		
+		switch (session) {
+		case "1" : document.write("<p>마케팅 세션은 <b>201호</b>에서...</p>") 
+			break;
+		case "2" : document.write("<p>개발 세션은 <b>203호</b>에서...</p>") 
+			break;
+		case "3" : document.write("<p>디자인 세션은 <b>205호</b>에서...</p>") 
+			break;
+		default : console.log("잘못 입력했습니다.")
+		}
+	</script>
+</body>
+</html>

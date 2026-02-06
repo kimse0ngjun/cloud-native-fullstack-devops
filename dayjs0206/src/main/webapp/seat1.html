@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/css/seat1.css">
+<title></title>
+</head>
+<body>
+	<script>
+		let memNum = parseInt(prompt('입장객은 몇 명인가요?', 2));
+		let colNum = parseInt(prompt('한 줄에 몇 명씩 앉습니까?', 2))
+		/* let rowNum = 0; */
+		let rowNum, seatNum;
+		
+		if (memNum % colNum == 0) {
+			rowNum = memNum / colNum;
+		} else {
+			rowNum = parseInt(memNum / colNum) + 1;
+		}
+		
+		document.write(`모두 ${rowNum}개의 줄이 필요합니다.`);
+		
+		/* let seatNo = 1; */
+		
+		document.write("<table>");
+		for (let i = 0; i < rowNum; i++) {
+			document.write("<tr>");
+		 	for (let j = 1; j <= colNum; j++) {
+		 		seatNum = i * colNum + j;
+		 		if (seatNum > memNum){
+		 			break;
+		 		}
+		 		document.write(`<td> 좌석 ${seatNum}</td>`);
+		 		
+		 		
+/* 		 		if (seatNo <= memNum) {
+		 			document.write(`<td> [${seatNo}] </td>`);
+				 	seatNo++;
+		 		} else {
+		 			document.write("<td></td>");
+		 		} */ 
+		 	} 
+			document.write("</tr>");
+		}
+		document.write("<table>");
+	</script>
+</body>
+</html>

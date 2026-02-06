@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>두 수 크기비교</title>
+</head>
+<body>
+	<h1 id="result"></h1>
+	<script>
+		let num1 = Number(prompt("비교할 첫 번째 숫자 : "));
+		let num2 = Number(prompt("비교할 두 번째 숫자 : "));
+		
+		compareTwo(num1, num2);
+		
+		function compareTwo(n1,n2) {
+			let result = document.getElementById("result");
+			
+			if (n1 == n2) {
+				result.innerText = n1 + "(와)가 " + n2 + "는 같습니다.";
+// 				prompt(`${num1}(이)가 ${num2}보다 큽니다.`);
+			} else if (n1 > n2) {
+				result.innerText = n1 + "(이)가 " + n2 + "보다 큽니다.";
+// 				prompt(`${num2}(이)가 ${num1}보다 큽니다.`);
+			} else {
+				result.innerText = n1 + "(이)가 " + n2 + "보다 작습니다.";
+// 				prompt(`${num1}랑 ${num2} 숫자가 같다.`);
+			}
+		}
+	</script>
+</body>
+</html>

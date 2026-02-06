@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>popup</title>
+</head>
+<body onload="openPopup()">
+	<script>
+		let blocked = false;
+		function openPopup() {
+			let newWindow = window.open("alert1.html", "", "width=300, height=300");
+			if (newWindow == null) {
+				alert("팝업이 차단되었습니다. 팝업 차단을 해제해 주세요.")
+			}
+		}
+	</script>
+</body>
+</html>

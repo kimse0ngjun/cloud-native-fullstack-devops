@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title> <!-- css 만들어서 구성 -->
+<link rel="stylesheet" href="static/css/register1.css">
+</head>
+<body>
+	<div id="container">
+		<h1>회원 가입을 환영합니다</h1>
+		<form action="#" method="get">
+			<fieldset>
+				<legend>사용자 정보</legend>
+				<ul>
+					<li>
+						<input type = "hidden" id="id" name="id">
+						<label for = "user_id" id="">아이디</label>
+						<input type = "text" id="user_id" name="id" autofocus required placeholder="4자 ~ 10자 사이, 공백 없이">
+					</li>
+					<li>
+						<label for = "email" id="email">이메일</label>
+						<input type = "text" id="email" name="email">
+					</li>
+					<li>
+						<label for = "pwd1" id="pwd1">비밀번호</label>
+						<input type = "password" id="pwd1" name="pwd1" required placeholder="문자와 숫자, 특수 기호 포함">
+					</li>
+					<li>
+						<label for = "pwd2" id="pwd2">비밀번호 확인</label>
+						<input type = "password" id="pwd2" name="pwd2">
+					</li>
+					<li>
+						<label for = "path">가입 경로</label>
+						<select id = "path">
+							<option value = "blog">블로그</option>
+							<option value = "search">검색</option>
+							<option value = "sns">SNS</option>
+							<option value = "etc">기타</option>
+						</select>
+					</li>
+					<li>
+					 	<label for = "memo" id="memo">메모</label>
+					 	<textarea rows="4" cols="40" placeholder="남길 말씀이 있다면 여기에"></textarea>
+					</li>
+					
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>이벤트와 새로운 소식</legend>
+				<input type="radio" name="mailing" id="mailingYes" value="yes">
+				<label for = "mailing">메일 수신</label>
+				<input type="radio" name="mailing" id="mailingNo" value="no">
+				<label for = "mailing">메일 수신 안함</label>
+			</fieldset>
+			<div>
+				<input type = "submit" value = "가입하기">
+				<input type = "reset" value = "취소">
+			</div>
+		</form>
+	</div>
+	<script>
+		const form = document.querySelector("form");
+		form.onsubmit = function(event) {
+	
+			let userId = document.getElementById("user_id").value;
+			
+			let idRegExp = /^[a-zA-Z0-9]{4,10}/;
+			
+			if (!idRegExp.test(userId)) {
+				alert("아이디는 영어나 숫자 4~10자리로 입력해주세요.")
+				document.getElementById("user_id").focus();
+				
+				event.preventDefault();
+				return false;
+			}  
+		};
+	</script>
+</body>
+</html>

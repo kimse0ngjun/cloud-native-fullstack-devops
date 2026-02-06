@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>event</title>
+<link rel="stylesheet" href="static/css/event.css">
+</head>
+<body>
+	<ul>
+		<li><a href="#" onclick="changeBackground('green')">Green</a></li>
+		<li><a href="#" onclick="changeBackground('orange')">Orange</a></li>
+		<li><a href="#" onclick="changeBackground('purple')">Purple</a></li>
+	</ul>	
+	<div id="result"></div>
+	
+	<script>
+		function changeBackground(color) { // let color -> x, color 변수만
+			let result = document.querySelector('#result');
+			result.style.backgroundColor = color;
+		}
+	</script>
+</body>
+</html>
