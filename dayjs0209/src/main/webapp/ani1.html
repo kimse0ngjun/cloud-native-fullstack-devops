@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ani</title>
+<style>
+	.box {
+		width: 100px;
+		height: 100px;
+		background-color: orange;
+		animation-name: aniBox;
+		animation-duration: 2s;
+	}
+	
+	@keyframes aniBox {
+		from {
+			transform:translateX(0);
+		}
+		
+		to {
+			transform:translateX(500px);
+		}
+	}
+</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

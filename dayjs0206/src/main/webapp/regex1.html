@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		const regex =/\d+/;
+		// console.log(regex.test("Age: 25"));
+		
+		const tel = "Contact: 010-1234-5678, 051-123-1234";
+		const texCheck = tel.match(/\d{2,3}-\d{3,4}-\d{4}/g);
+		// console.log(texCheck);
+		
+		const change = "ID is User123";
+		// console.log(change.replace(/\d/g), "0");
+		
+		// 이메일 검증
+		const emailRegex = /^[a-zA-Z0-9.$+-]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,}$/;
+		// console.log(emailRegex.test("test@hong.org"));
+		// console.log(emailRegex.test("test"));
+		
+		// 휴대폰 검증
+		const phoneRegex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+		// console.log(phoneRegex.test("010-1234-1234"));
+		// console.log(phoneRegex.test("01012341234"));
+		
+		// 비밀번호 검증
+		const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+		// console.log(passwordRegex.test("Abcd1234"));
+		
+		// 숫자만 남기고 모두 제거
+		const input = "010-1234-5678";
+		const onlyNum = input.replace(/[^0-9]/g, "");
+		console.log(onlyNum);
+	</script>
+</body>
+</html>

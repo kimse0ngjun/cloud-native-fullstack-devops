@@ -13,25 +13,26 @@
 				<legend>사용자 정보</legend>
 				<ul>
 					<li>
-						<input type = "hidden" id="id" name="id">
-						<label for = "user_id" id="">아이디</label>
-						<input type = "text" id="user_id" name="id" autofocus required placeholder="4자 ~ 10자 사이, 공백 없이">
+						<input type = "hidden" id="hid" name="hid_id">
+						<label for = "fid">아이디</label>
+						<input type = "text" id="fid" name="fid_id" autofocus required placeholder="4자 ~ 10자 사이, 공백 없이">
 					</li>
 					<li>
-						<label for = "email" id="email">이메일</label>
-						<input type = "text" id="email" name="email">
+						<label for = "email">이메일</label>
+						<input type = "text" id="email" name="email" required>
 					</li>
 					<li>
-						<label for = "pwd1" id="pwd1">비밀번호</label>
+						<label for = "pwd1">비밀번호</label>
 						<input type = "password" id="pwd1" name="pwd1" required placeholder="문자와 숫자, 특수 기호 포함">
 					</li>
 					<li>
-						<label for = "pwd2" id="pwd2">비밀번호 확인</label>
-						<input type = "password" id="pwd2" name="pwd2">
+						<label for = "pwd2">비밀번호 확인</label>
+						<input type = "password" id="pwd2" name="pwd2" required>
 					</li>
 					<li>
 						<label for = "path">가입 경로</label>
 						<select id = "path">
+							<option value = "">[선택]</option>
 							<option value = "blog">블로그</option>
 							<option value = "search">검색</option>
 							<option value = "sns">SNS</option>
@@ -39,7 +40,7 @@
 						</select>
 					</li>
 					<li>
-					 	<label for = "memo" id="memo">메모</label>
+					 	<label for = "memo">메모</label>
 					 	<textarea rows="4" cols="40" placeholder="남길 말씀이 있다면 여기에"></textarea>
 					</li>
 					
@@ -62,17 +63,47 @@
 		const form = document.querySelector("form");
 		form.onsubmit = function(event) {
 	
-			let userId = document.getElementById("user_id").value;
+			const userId = document.getElementById("fid").value;
+			const emailId = document.getElementById("email").value;
+			const passwordId = document.getElementById("pwd1").value;
+			const repasswordId = document.getElementById("pwd2").value;
+			
 			
 			let idRegExp = /^[a-zA-Z0-9]{4,10}/;
-			
 			if (!idRegExp.test(userId)) {
 				alert("아이디는 영어나 숫자 4~10자리로 입력해주세요.")
-				document.getElementById("user_id").focus();
+				document.getElementById("fid").focus();
 				
 				event.preventDefault();
 				return false;
 			}  
+			
+			let emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+			
+			if (!emailRegExp.test(emailId)){
+				alert("올바른 입력 방식이 아닙니다. (ex) test@gmail.com)")
+				document.getElementById("email").focus();
+				event.preventDefault();
+				return false;
+			}
+			
+			let pwdRegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+			if (!pwdRegExp.test(passwordId)){
+				alert("비밀번호는 문자와 숫자, 특수 기호를 하나 이상 포함하여 입력해주세요.")
+				document.getElementById("pwd1").focus();
+				
+				event.preventDefault();
+				return false;
+			}
+			
+			if (passwordId !== repasswordId) {
+				alert("비밀번호가 서로 일치하지 않습니다. 다시 확인해주세요.")
+				document.getElementById("pwd2").focus();
+				event.preventDefault();
+				return false;
+			}
+			
+			alert("검증 성공!")
 		};
 	</script>
 </body>
