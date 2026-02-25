@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;      
+}
+.spinner {
+    width: 200px;
+    height: 200px;
+    background: url('../images/ball.png') no-repeat;
+    background-size: 100%;
+    animation-name: roundTrip;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes roundTrip {
+	from {
+		transform: translateX(0);
+	}
+	
+	to {
+		transform: translateX(500px);
+	}
+}
+

@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+a {
+	display: block;
+	text-decoration: none;
+	color: blue;
+}
+
+body > nav > ul > li {
+	font-size: 1.1em;
+	font-weight: 600px;
+	padding: 10px 30px;	
+	margin: 0 10px;
+	border: 2px solid black;
+	border-radius: 5px;
+}

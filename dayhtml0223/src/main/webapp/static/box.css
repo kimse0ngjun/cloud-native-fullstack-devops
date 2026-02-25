@@ -12,11 +12,11 @@
 }
 
 .box {
-	padding: 15px;
-	color: #fff;
-	align-items: center;
-	font-weight: bold;
-	border: 1px solid rgba(0,0,0,0.1);
+	display: flex;
+	flex-basis: 300px;
+	justify-content: center;
+	align-items: flex-start;
+	padding-top: 10px;
 }
 
 .box1 {

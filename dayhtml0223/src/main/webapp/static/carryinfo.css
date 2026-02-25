@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#container {
+	width: 600px;
+	margin: 20px auto;
+	padding: 20px;
+	border: 2px solid black;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+li {
+	margin-bottom: 15px;
+}
+
+input[type="text"], input[type="tel"],
+select, textarea {
+	width: 300px;
+	padding: 5px;
+}
+
+
+label {
+	display: inline-block;
+	width: 100px;
+	margin-left: 20px;
+}	
+
+legend {
+	margin-left: 15px;
+}
+
+#deliveryinfo fieldset:last-child {
+	text-align: center;
+	border: none;
+	padding: 20px;
+	
+}
+
+button[type="submit"], 
+button[type="reset"] {
+	padding: 10px 20px;
+	margin: 0 10px;
+	cursor: pointer;
+}
+
+fieldset {
+	width: 500px;
+	padding: 20px;
+	margin: 0 auto 20px;
+	border: 2px solid black;
+}
