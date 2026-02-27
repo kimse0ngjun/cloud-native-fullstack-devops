@@ -12,7 +12,7 @@
 	<input type="hidden" name="repRoot" value="${}">
 	<input type="hidden" name="repStep" value="${}">
 	<input type="hidden" name="repIndent" value="${}">
-	원래글번호: ${}&bpsp;&bpsp;&bpsp;&bpsp;
+	원래글번호: ${}&nbsp;&nbsp;&nbsp;&nbsp;
 	조회수: ${}<br>
 	제목: <input type="text" name="title" value="${}"><br>
 	작성자: <input type="text" name="author" value="${}"><br>
