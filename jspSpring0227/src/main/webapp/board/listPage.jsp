@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>    
-    
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +9,7 @@
 </head>
 <body>
 <h1>게시판 목록 보기</h1>
-<table  border="1">
+<table border="1">
 	<tr>
 		<td colspan="5">
 			<form action="search.do">
@@ -37,15 +36,21 @@
 			<td>${dto.num}</td>
 			<td>
 				<c:forEach begin="1" end="${dto.repIndent}">
-					<%="&nbsp;&nbsp;" %>
+					<%="&nbsp;&nbsp;"%>
 				</c:forEach>
-				<a href="retrive.do?num=${dto.num}">${dto.title}</a>
+				<a href="retrieve.do?num=${dto.num}">${dto.title}</a>
 			</td>
 			<td>${dto.author}</td>
 			<td>${dto.writeday}</td>
 			<td>${dto.readCnt}</td>
 		</tr>
 	</c:forEach>
+	
+	<tr>
+		<td colspan="5">
+			<jsp:include page="page.jsp" flush="true"/>
+		</td>
+	</tr>
 </table>
 <a href="writeui.do">[글쓰기]</a>
 </body>

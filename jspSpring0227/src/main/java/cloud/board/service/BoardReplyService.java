@@ -1,0 +1,24 @@
+package cloud.board.service;
+
+import cloud.board.dao.BoardDao;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class BoardReplyService implements BoardService {
+
+	@Override
+	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+		String num = req.getParameter("num");
+		String title = req.getParameter("title");
+		String author = req.getParameter("author");
+		String content = req.getParameter("content");
+		String repRoot = req.getParameter("repRoot");
+		String repStep = req.getParameter("repStep");
+		String repIndent = req.getParameter("repIndent");
+		
+		BoardDao dao = new BoardDao();
+		dao.reply(num, title, author, content, repRoot, repStep, repIndent);
+		
+	}
+}
