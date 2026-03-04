@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+/* 페이징 전체 감싸는 영역 */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    gap: 5px;
+}
+
+/* 모든 페이징 버튼 공통 스타일 */
+.page-btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 마우스 올렸을 때 (Hover) */
+.page-btn:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+    color: #0056b3;
+}
+
+/* 현재 페이지 표시 (Active) */
+.page-btn.active {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    cursor: default;
+}
+
+/* 이전/다음 글자 강조 */
+.prev-next {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* Table */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+table tr:first-child {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+table tr:hover {
+    background-color: #fcfcfc;
+}
+
+h1 {
+	text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.action-bar {
+    width: 90%;           
+    margin: 15px auto;    
+    text-align: right;    
+}
+
+.write-link {
+    display: inline-block;
+    padding: 8px 15px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.write-link:hover {
+    background-color: #e9e9e9;
+    border-color: #bbb;
+    color: #000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

@@ -47,7 +47,7 @@
 		</tr>
 	</c:forEach>
 </table>
-<a href="writeui.do">[글쓰기]</a>
+<a href="${pageContext.request.contextPath}/writeui.do">[글쓰기]</a>
 </body>
 </html>
 
