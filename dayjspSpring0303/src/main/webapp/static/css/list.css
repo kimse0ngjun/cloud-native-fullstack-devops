@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-/* 페이징 전체 감싸는 영역 */
 .pagination-wrapper {
     display: flex;
     justify-content: center;
@@ -9,7 +8,6 @@
     gap: 5px;
 }
 
-/* 모든 페이징 버튼 공통 스타일 */
 .page-btn {
     display: inline-block;
     padding: 8px 14px;
@@ -22,14 +20,12 @@
     transition: all 0.2s ease-in-out;
 }
 
-/* 마우스 올렸을 때 (Hover) */
 .page-btn:hover {
     background-color: #e9ecef;
     border-color: #adb5bd;
     color: #0056b3;
 }
 
-/* 현재 페이지 표시 (Active) */
 .page-btn.active {
     background-color: #007bff;
     border-color: #007bff;
@@ -38,13 +34,11 @@
     cursor: default;
 }
 
-/* 이전/다음 글자 강조 */
 .prev-next {
     background-color: #f8f9fa;
     font-weight: 600;
 }
 
-/* Table */
 
 table {
     width: 100%;
@@ -69,9 +63,9 @@ table tr:hover {
 }
 
 h1 {
-	text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    flex-grow: 1;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .action-bar {
@@ -98,3 +92,41 @@ h1 {
     color: #000;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+.header-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 5%; 
+    position: relative;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.auth-links {
+    display: flex;
+    gap: 10px;
+    white-space: nowrap; 
+}
+
+.spacer {
+    width: 150px;
+}
+
+.auth-links a {
+	text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px; 
+    transition: all 0.3s ease;
+    border: 1px solid #007bff;
+}
+
+.auth-links a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    opacity: 0.9;
+}
+

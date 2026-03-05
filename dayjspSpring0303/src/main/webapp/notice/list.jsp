@@ -9,9 +9,13 @@
 <title>공지 사항 목록</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/list.css">
 </head>
-<h1>공지사항 목록</h1>
- <a href="${pageContext.request.contextPath}/loginui.do" class="login-link">[로그인]</a>
 <body>
+	<div class="header-container">
+	    <h1>공지사항 목록</h1> <div class="auth-links">
+	        <a href="${pageContext.request.contextPath}/loginui.do" class="login-link">로그인</a>
+	        <a href="${pageContext.request.contextPath}/joinui.do" class="join-link">회원가입</a>
+	    </div>
+	</div>
 	<table border="1">
 		<tr>
 			<td colspan="6">
@@ -75,7 +79,7 @@
 </div>
 
 <div class="action-bar">
-    <a href="${pageContext.request.contextPath}/writeui.do" class="write-link">[글쓰기]</a>
+    <a href="${pageContext.request.contextPath}/writeui.do" class="write-link">글쓰기</a>
 </div>
 </body>
 </html>
