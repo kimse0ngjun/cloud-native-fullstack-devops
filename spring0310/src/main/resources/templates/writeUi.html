@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>공지사항 등록</title>
+</head>
+<body>
+<h2>공지사랑 등록</h2>
+<form th:action="@{/notice/write}" method="post">
+	<div>제목: <input type="text" name="title" required></div>
+	<div>작성자: <input type="text" name="writer"></div>
+	<div>내용: <textarea name="content"></textarea></div>
+	<br>
+	<button type="submit">공지 올리기</button>
+	<!-- <button type="button" onclick="history.back()">취소</button> -->
+	<button type="reset">취소</button>
+	<a th:href="@{/notice/list}">목록으로 돌아가기</a>
+</form>
+</body>
+</html>

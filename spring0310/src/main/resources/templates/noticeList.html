@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>공지 목록</title>
+</head>
+<body>
+<h2>공지 관리 시스템</h2>
+<a th:href="@{/notice/writeui}">[신규 공지 등록]</a>
+<table border="1">
+	<thead>
+		<tr>
+			<th>아이디</th>
+			<th>제목</th>
+			<th>내용</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr th:each="notice : ${list}">
+			<td>
+            <a th:href="@{/notice/detail(id=${notice.id})}" th:text="${notice.id}"></a>
+            </td>
+			<td th:text="${notice.title}"></td>
+			<td th:text="${notice.content}"></td>
+			<td th:text="${notice.writer}"></td>
+			<td th:text="${notice.regDate}"></td>
+			<td th:text="${notice.hit}"></td>
+		</tr>
+		<tr th:if="${#lists.isEmpty(list)}">
+			<td colspan="6">공지가 없습니다.</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>
