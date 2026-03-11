@@ -14,4 +14,5 @@ public interface NoticeMapper {
 	int updateNotice(NoticeDTO notice) throws Exception;
 	NoticeDTO deleteNotice(int id) throws Exception;
 	int updateHit(int id) throws Exception;
+	// void updateHit(int id);
 }

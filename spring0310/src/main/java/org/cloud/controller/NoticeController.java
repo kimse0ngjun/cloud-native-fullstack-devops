@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 
 @Controller
-@RequestMapping("/notice")
+@RequestMapping("/") // localhost8080/notice
 public class NoticeController {
 
 	private final DatabaseConfig databaseConfig;
@@ -23,41 +23,42 @@ public class NoticeController {
 	@Autowired
 	NoticeService noticeService;
 	
+	
 	NoticeController(DatabaseConfig databaseConfig) {
 		this.databaseConfig = databaseConfig;
 	}
 
-	@GetMapping("/list")
+	@GetMapping("/notice/list")
 	public String openNoticeList(Model model) throws Exception {
 		model.addAttribute("list", noticeService.noticeList());
 		return "noticeList";
 	}
 	
-	@GetMapping("/writeui")
+	@GetMapping("/notice/writeui")
 	public String writeUI() {
 		return "writeUi";
 	}
 	
-	@PostMapping("/write")
+	@PostMapping("/notice/write")
 	public String noticeWrite(NoticeDTO notice) throws Exception {
 		noticeService.writeNotice(notice);
 		return "redirect:/notice/list";
 	}
 	
-	@GetMapping("/detail")
+	@GetMapping("/notice/detail")
 	public String noticeDetail(@RequestParam("id") int id, Model model) throws Exception {
 		NoticeDTO notice = noticeService.noticeDetail(id);
 		model.addAttribute("notice", notice);
 		return "detailNotice";
 	}
 	
-	@PostMapping("/update")
+	@PostMapping("/notice/update")
 	public String noticeUpdate(NoticeDTO notice) throws Exception {
 		noticeService.updateNotice(notice);
 		return "redirect:/notice/list";
 	}
 	
-	@PostMapping("/delete")
+	@PostMapping("/notice/delete")
 	public String noticeDelete(@RequestParam("id") int id) throws Exception {
 		noticeService.deleteNotice(id);
 		return "redirect:/notice/list";

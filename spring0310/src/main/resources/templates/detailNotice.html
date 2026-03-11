@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지 상세 정보</title>
 </head>
 <body>
 
@@ -16,12 +16,12 @@
 <body>
 	<h2>공지 상세 정보</h2>
 	<form th:action="@{/notice/update}" method="post">
-		<div>아이디:<input type="text" name="id" th:value="${notice.id}"></div><br>
+		<div>아이디:<input type="text" name="id" th:value="${notice.id}" readonly></div><br>
 		<div>제목: <input type="text" name="title" th:value="${notice.title}"></div><br>
 		<div>내용<input type="text" name="content" th:value="${notice.content}" placeholder="M/F 선택"></div><br>
 		<div>작성자<input type="text" name="writer" th:value="${notice.writer}" placeholder="생년월일 입력"></div><br>
-		<div>작성일<input type="text" name="regDate" th:value="${notice.regDate}"></div><br>
-		<div>조회수<input type="text" name="hit" th:value="${notice.hit}"></div><br>
+		<div>작성일<input type="text" name="regDate" th:value="${notice.regDate}" readonly></div><br>
+		<div>조회수<input type="text" name="hit" th:value="${notice.hit}" readonly></div><br>
 		<button>정보 수정</button>
 	</form> 
 	<hr>
