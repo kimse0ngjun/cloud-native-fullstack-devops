@@ -7,7 +7,7 @@
 		SELECT
 			userid, userpw, username, reg_date
 		FROM
-			nnumber
+			nmember
 		WHERE userid = #{userId} AND userpw = #{userPw}
 	</select>
 	

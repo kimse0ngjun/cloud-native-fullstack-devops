@@ -6,15 +6,18 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.cloud.dto.BoardDto;
+import org.cloud.dto.Criteria;
 import org.cloud.dto.FileDto;
 import org.cloud.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Service
+@Transactional
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
@@ -27,7 +30,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public void insertBoard(BoardDto board, MultipartHttpServletRequest request) throws Exception {
-		boardMapper.insertBoard(board);
+		boardMapper.insertBoard(board); 
 		saveFiles(board, request);
 	}
 	
@@ -63,6 +66,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public void deleteFile(int fileIdx) throws Exception {
+		// TODO Auto-generated method stub
 		FileDto file = boardMapper.selectFileInfo(fileIdx);
 		if (file != null) {
 			File physicalFile = new File(file.getStoredFilePath());
@@ -112,7 +116,17 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 	
+	@Override
+	public List<BoardDto> selectBoardListPaging(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return boardMapper.selectBoardListPaging(cri);
+	}
 	
+	@Override
+	public int selectBoardTotalCount() throws Exception {
+		// TODO Auto-generated method stub
+		return boardMapper.selectBoardTotalCount();
+	}
 }
 
 

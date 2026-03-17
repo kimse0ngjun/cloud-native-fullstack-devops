@@ -1,13 +1,17 @@
 package org.cloud.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.cloud.dto.BoardDto;
+import org.cloud.dto.Criteria;
+import org.cloud.dto.PageResponse;
 import org.cloud.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,9 +26,21 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@GetMapping("/openBoardList.do")
-	public String openBoardList(Model model) throws Exception {
-		List<BoardDto> list = boardService.selectBoardList();
+	public String openBoardList(Model model, Criteria cri) throws Exception {
+		//List<BoardDto> list = boardService.selectBoardList();
+		if (cri.getPageNum() <= 0) {
+			cri.setPageNum(1);
+		}
+		if (cri.getAmount() <= 0) {
+			cri.setAmount(10);
+		}
+		
+		List<BoardDto> list = boardService.selectBoardListPaging(cri);
 		model.addAttribute("list", list);
+		
+		int total = boardService.selectBoardTotalCount();
+		//int total = 500;
+		model.addAttribute("pageMaker", new PageResponse(cri, total));
 		return "board/boardList";
 	}
 	
@@ -33,29 +49,46 @@ public class BoardController {
 		return "board/boardWrite";
 	}
 	
-	@PostMapping("/insertBoard.do")
-	public String insertBoard(BoardDto board, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
+	@PostMapping("/insertBoard.do") //localhost:8080/board/insertBoard.do
+	public String insertBoard(BoardDto board, MultipartHttpServletRequest multipartHttpServletRequest, Principal principal) throws Exception {
+		if (principal != null) {
+	        board.setCreatorId(principal.getName()); 
+	    }
 		boardService.insertBoard(board, multipartHttpServletRequest);
 		return "redirect:/board/openBoardList.do";
 	}
 	
 	@GetMapping("/openBoardDetail.do")
-	public String openBoardDetail(@RequestParam("boardId") int boardId, Model model) throws Exception {
+	public String openBoardDetail(@RequestParam("boardId") int boardId, Model model, @ModelAttribute("cri") Criteria cri) throws Exception {
 		BoardDto board = boardService.selectDetail(boardId);
 		model.addAttribute("board", board);
 		return "board/boardDetail";
 	}
 	
 	@PostMapping("/updateBoard.do")
-	public String updateBoard(BoardDto board, MultipartHttpServletRequest request) throws Exception {
-		boardService.updateBoard(board, request);
-		return "redirect:/board/openBoardList.do";
+	public String updateBoard(BoardDto board, MultipartHttpServletRequest request, Criteria cri, Principal principal) throws Exception {
+		BoardDto detailBoard = boardService.selectDetail(board.getBoardId());
+		if (principal != null && detailBoard.getCreatorId().equals(principal.getName())) {
+			boardService.updateBoard(board, request);
+			return "redirect:/board/openBoardList.do?pageNum=" + cri.getPageNum();
+		} else {
+			return "redirect:/board/openBoardList.do?error=auth";
+		}
+		
 	}
 	
 	@PostMapping("/deleteBoard.do")
-	public String deleteBoard(@RequestParam("boardId") int boardId) throws Exception {
-		boardService.deleteBoard(boardId);
-		return "redirect:/board/openBoardList.do";
+	public String deleteBoard(@RequestParam("boardId") int boardId, Principal principal) throws Exception {
+		BoardDto board = boardService.selectDetail(boardId);
+		
+		if (principal != null && board.getCreatorId().equals(principal.getName())) {
+			boardService.deleteBoard(boardId);
+			return "redirect:/board/openBoardList.do";
+		} else {
+			return "redirect:/board/openBoardList.do?error=auth";
+		}
+		
+		
 	}
 	
 	@PostMapping("/deleteFile.do")
