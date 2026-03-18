@@ -12,7 +12,7 @@
 			WHERE deleted_yn = 'N' ORDER BY board_id DESC		
 		]]>
 	</select>
-	<insert id="insertBoard" parameterType="org.cloud.dto.BoardDto" useGeneratedKeys="true" keyProperty="boardId">
+	<insert id="insertBoard" parameterType="org.cloud.dto.BoardDto">
 		<![CDATA[
 			INSERT 
 			INTO
@@ -62,68 +62,6 @@
 		WHERE
 			board_id = #{boardId}	
 	</delete>
-	
-	<insert id="insertFileList" parameterType="java.util.List">
-		<![CDATA[
-			INSERT INTO
-				t_file(board_id, original_file_name, stored_file_path, file_size, creator_id, created_datetime)
-			VALUES	
-		]]>
-		<foreach collection="list" item="item" separator=",">
-			(#{item.boardId}, #{item.originalFileName}, #{item.storedFilePath}, #{item.fileSize}, #{item.creatorId}, NOW())
-		</foreach>
-	</insert>
-	
-	<select id="selectFileList" resultType="org.cloud.dto.FileDto" parameterType="int">
-		<![CDATA[
-			SELECT 
-				file_idx, board_id, original_file_name, ROUND(file_size/1024) AS file_size, stored_file_path, creator_id
-			FROM
-				t_file
-			WHERE
-				board_id = #{boardId} AND deleted_yn = 'N'		
-		]]>
-	</select>
-	
-	<delete id="deleteFile" parameterType="int">
-		DELETE 
-		FROM
-			t_file
-		WHERE
-			file_idx = #{fileIdx}
-	</delete>
-	
-	<delete id="deleteFileList" parameterType="int">
-		DELETE 
-		FROM
-			t_file
-		WHERE
-			board_id = #{boardId}
-	</delete>
-	
-	<select id="selectFileInfo" resultType="org.cloud.dto.FileDto" parameterType="int">
-		<![CDATA[
-			SELECT 
-				file_idx, board_id, original_file_name, stored_file_path
-			FROM
-				t_file
-			WHERE
-				file_idx = #{fileIdx}
-		]]>
-	</select>
-	
-	<select id="selectBoardListPaging" resultType="org.cloud.dto.BoardDto" parameterType="org.cloud.dto.Criteria">
-		<![CDATA[
-			SELECT board_id, title, hit_cnt, creator_id, DATE_FORMAT(created_datetime, '%Y-%m-%d %H:%i:%s') AS created_datetime
-			FROM t_board ORDER BY board_id DESC LIMIT #{skip}, #{amount} 
-		]]>
-	</select>
-
-	<select id="selectBoardTotalCount" resultType="int">
-		<![CDATA[
-			SELECT COUNT(*) FROM t_board
-		]]>
-	</select>
 </mapper>
 
 

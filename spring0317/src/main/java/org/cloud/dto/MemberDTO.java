@@ -3,10 +3,11 @@ package org.cloud.dto;
 import lombok.Data;
 
 @Data
-public class MemberDto {
+// @Getter, @Setter
+public class MemberDTO {
 
 	private String userId;
-	private String password;
+	private String userPw;
 	private String userName;
-	private String role;
+	private String regDate;
 }

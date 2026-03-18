@@ -1,45 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-      th:replace="~{layout/default_layout :: layout(~{::section})}">
+<html xmlns:th="http://thymeleaf.org">
 <head>
-    <title>로그인</title>
+<meta charset="UTF-8">
+<title>메인 페이지</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <section>
-        <div style="text-align: center; margin-bottom: 30px;">
-            <h2>LOGIN</h2>
-            <p>서비스 이용을 위해 로그인해 주세요.</p>
-        </div>
-
-        <div th:if="${#authorization.expression('isAnonymous()')}">
-            <form th:action="@{/member/loginProc.do}" method="post">
-                <table class="board_detail" style="max-width: 450px; margin: 0 auto;">
-                    <colgroup>
-                        <col width="30%" />
-                        <col width="70%" />
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <th>아이디</th>
-                            <td><input type="text" name="userId" required /></td>
-                        </tr>
-                        <tr>
-                            <th>비밀번호</th>
-                            <td><input type="password" name="password" required /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div style="text-align: center; margin-top: 20px;">
-                    <button type="submit" class="btn">로그인</button>
-                    <a th:href="@{/member/join.do}" class="btn" style="background:#999;">회원가입</a>
-                </div>
-            </form>
-        </div>
-
-        <div th:if="${#authorization.expression('isAuthenticated()')}" style="text-align: center; padding: 40px 0;">
-            <h3>반갑습니다, <span th:text="${#authentication.name}"></span>님!</h3>
-            <a th:href="@{/board/openBoardList.do}" class="btn">게시판 입장</a>
-        </div>
-    </section>
+<div class="container">
+	<h1>제목 미정 시스템</h1>
+	<div class="menu" th:if="${session.user == null}">
+		<p>서비스를 이용하시려면 로그인해주세요.</p>
+		<a th:href="@{/login}" class="btn-primary">로그인</a>
+		<a th:href="@{/join}" class="btn-primary">회원가입</a>
+	</div>
+	
+	<div class="menu" th:unless="${session.user == null}">
+		<div class="user-info">
+			<span th:text="${session.user.userName} + '님 반갑습니다!!'"></span>
+		</div>	
+		<a th:href="@{/notice}">공지사항</a>
+		<a th:href="@{/notice/writeui}">새 글 작성</a>
+		<a th:href="@{/logout}">로그아웃</a>
+	</div>
+</div>
 </body>
 </html>

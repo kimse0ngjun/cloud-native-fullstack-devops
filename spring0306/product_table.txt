@@ -1,0 +1,11 @@
+drop table product;
+
+create table product(
+	num int auto_increment primary key,
+	name varchar(20) not null,
+	price int not null,
+	amount int,
+	stored_file_path varchar(300)  #파일업로드 추가
+);
+
+insert into product(name, price, amount) values("새우깡", 1700, 10);

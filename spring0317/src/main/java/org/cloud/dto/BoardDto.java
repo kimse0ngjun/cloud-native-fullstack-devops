@@ -1,7 +1,5 @@
 package org.cloud.dto;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
@@ -15,5 +13,4 @@ public class BoardDto {
 	private String creatorId;
 	private String updatedDatetime;
 	private String updaterId;
-	private List<FileDto> fileList;
 }

@@ -1,8 +1,12 @@
 package org.cloud.mapper;
 
-import org.cloud.dto.MemberDto;
+import org.apache.ibatis.annotations.Mapper;
+import org.cloud.dto.MemberDTO;
 
+@Mapper
 public interface MemberMapper {
-	void insertMember(MemberDto member) throws Exception;
-	MemberDto selectMemberById(String userId) throws Exception;
+
+	MemberDTO memberLoginCheck(MemberDTO member);
+	void memberJoin(MemberDTO member);
+	int idCheck(String userId);
 }
