@@ -1,11 +1,13 @@
 package org.cloud.service;
 
+import java.io.File;
 import java.util.List;
 
 import org.cloud.dto.ProductDTO;
 import org.cloud.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -21,9 +23,8 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Override
 	public int insertProduct(ProductDTO product) throws Exception {
-		// TODO Auto-generated method stub
-		productMapper.insertProduct(product);
-		return 0;
+	    productMapper.insertProduct(product);
+	    return 0;
 	}
 	
 	@Override

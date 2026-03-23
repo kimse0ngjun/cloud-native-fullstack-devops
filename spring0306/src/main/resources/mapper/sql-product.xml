@@ -7,7 +7,7 @@
 	<select id="productList" resultType="org.cloud.dto.ProductDTO">
 		<![CDATA[
 			SELECT 
-				num, name, price, amount
+				num, name, price, amount, stored_file_path
 			FROM
 				product
 			ORDER BY num DESC;		
@@ -18,11 +18,11 @@
 		<![CDATA[
 			INSERT INTO product
 			(
-				name, price, amount
+				name, price, amount, stored_file_path
 			)
 			VALUES
 			(
-				#{name}, #{price}, #{amount}
+				#{name}, #{price}, #{amount}, #{storedFilePath}
 			)
 		]]>
 	</insert>
@@ -30,7 +30,7 @@
 	<select id="productDetail" parameterType="int" resultType="org.cloud.dto.ProductDTO">
 		<![CDATA[
 			SELECT 
-				num, name, price, amount
+				num, name, price, amount, stored_file_path
 			FROM
 				product
 			WHERE num = #{num}	
@@ -38,16 +38,24 @@
 	</select>
 	
 	<update id="updateProduct" parameterType="org.cloud.dto.ProductDTO">
-		<![CDATA[
-			UPDATE
-				product
-			SET
-				name = #{name},
-				price = #{price},
-				amount = #{amount}
-			WHERE 
-				num = #{num}		
-		]]>
+		UPDATE product
+		<set>
+			<if test="name != null">
+				<![CDATA[ name = #{name}, ]]>
+			</if>
+			<if test="price != 0">
+				<![CDATA[ price = #{price}, ]]>
+			</if>
+			<if test="amount != 0">
+				<![CDATA[ amount = #{amount}, ]]>
+			</if>
+			<if test="storedFilePath != null">
+				<![CDATA[ stored_file_path = #{storedFilePath} ]]>
+			</if>
+		</set>
+		<where>
+			<![CDATA[ num = #{num} ]]>
+		</where>
 	</update>
 	
 	<delete id="deleteProduct" parameterType="int">
