@@ -32,28 +32,22 @@
 <script>
 	async function checkId() {
 		const userId = document.getElementById('userId').value;
-	
 		if(!userId){
 			alert("아이디를 입력하세요.");
 			return;
 		}
-	
-		const response = await fetch(`/idCheck?userId=${userId}`);
+		
+		const response = await fetch(`/idCheck?userid=${userId}`);
 		const count = await response.json();
-	
 		const msg = document.getElementById('idMsg');
 		const btn = document.getElementById('submitBtn');
-	
 		if(count === 0){
-			msg.innerText = "사용 가능합니다.";
-			msg.style.color = "green";
-			btn.disabled = false;
+			msg.innerText = "사용 가능합니다."; msg.style.color = "green"; btn.disabled = false;	
 		} else {
-			msg.innerText = "중복된 아이디 입니다.";
-			msg.style.color = "red";
-			btn.disabled = true;
+			msg.innerText = "중복된 아이디 입니다."; msg.style.color = "red"; btn.disabled = true;	
+		}
+		
 	}
-}
 </script>
 </body>
 </html>

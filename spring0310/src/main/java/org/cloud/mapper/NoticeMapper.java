@@ -8,11 +8,10 @@ import org.cloud.dto.NoticeDTO;
 @Mapper
 public interface NoticeMapper {
 
-	List<NoticeDTO> noticeList() throws Exception;
-	int writeNotice(NoticeDTO notice) throws Exception;
-	NoticeDTO noticeDetail(int id) throws Exception;
-	int updateNotice(NoticeDTO notice) throws Exception;
-	NoticeDTO deleteNotice(int id) throws Exception;
-	int updateHit(int id) throws Exception;
-	// void updateHit(int id);
+	List<NoticeDTO> noticeList();
+	void noticeWrite(NoticeDTO notice);
+	NoticeDTO noticeDetail(int id);
+	void updateHit(int id);
+	void noticeUpdate(NoticeDTO notice);
+	void noticeDelete(int id);
 }

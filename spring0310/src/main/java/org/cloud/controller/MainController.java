@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -14,18 +13,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/")
+
 public class MainController {
 	
 	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
 	
-	@GetMapping("/index")
+	@GetMapping("/")
 	public String index() {
 		return "index";
 	}
 	
-	@GetMapping("/login") 
+	@GetMapping("/login")
 	public String loginForm() {
 		return "login";
 	}
@@ -37,7 +36,7 @@ public class MainController {
 			session.setAttribute("user", user);
 			return "redirect:/";
 		}
-		rttr.addAttribute("errorMsg", "아이디 또는 비밀번호가 일치하지 않습니다."); // Get, Post 체크
+		rttr.addFlashAttribute("errorMsg", "아이디 또는 비밀번호가 일치하지 않습니다.");
 		return "redirect:/login?error=true";
 	}
 	
@@ -54,7 +53,7 @@ public class MainController {
 	
 	@ResponseBody
 	@GetMapping("/idCheck")
-	public int idCheck(@RequestParam("userId") String userId) {
+	public int idCheck(@RequestParam("userid") String userId) {
 		return memberService.idCheck(userId);
 	}
 	
@@ -64,3 +63,8 @@ public class MainController {
 		return "redirect:/";
 	}
 }
+
+
+
+
+

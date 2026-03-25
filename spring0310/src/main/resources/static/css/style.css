@@ -2,33 +2,31 @@
 
 body {
 	background-color: #f4f7f6;
-	font-family: 'pretendard', sans-serif;
+	font-family: 'Pretendard', sans-serif;
 	margin: 0;
 	padding: 0;
 }
 
 .container {
-	width: 500px;
+	width:500px;
 	margin: 80px auto;
 	background-color: #fff;
 	padding: 40px;
 	border-radius: 12px;
 	box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-	text-align: center;
+	text-align: center; 
 }
 
 .form-group {
 	text-align: left;
 	margin-bottom: 20px;
 }
-
 .form-group label {
 	display: block;
 	font-weight: 600;
 	margin-bottom: 8px;
-	color: #34495e;	
+	color: #34495e;
 }
-
 .form-group input {
 	width: 100%;
 	padding: 12px;
@@ -37,11 +35,10 @@ body {
 	box-sizing: border-box;
 	translation: 0.3s;
 }
-
 .form-group input:focus {
 	border-color: #3498db;
 	outline: none;
-	box-sizing: 0 0 5px rgba(52, 152, 219, 0.3);
+	box-shadow: 0 0 5px rgba(52,152,219, 0.3);
 }
 
 .btn-primary {
@@ -53,28 +50,36 @@ body {
 	border-radius: 6px;
 	font-size: 16px;
 	cursor: pointer;
-	transition: 0.3s;
-	margin-top: 20px;
+	transition:0.3s;
+	margin-top: 10px;
 }
-
 .btn-primary:hover {
 	background: #2980b9;
 }
 
-.menu a {
-	padding: 17px;
-	margin: 20px 20px;
-	background: #f8f9fa;
-	border-radius: 8px;
+.menu a{
+	display: block;
+	padding: 12px;
+	margin: 10px 0;
+	border: solid 1px #ddd;
 	text-decoration: none;
-	color: #2c3e50;
+	border-radius: 8px;
+	trasition: 0.2s;
+	font-size: 15px;
 	font-weight: 500;
-	transition: 0.2s;
-	border: 2px solid #ddd;
 }
 
-.menu p {
+.menu p{
 	color: #666;
-	margin-bottom: 30px;
+	margin-bottom: 25px;
 	font-size: 15px;
 }
+
+
+
+
+
+
+
+
+

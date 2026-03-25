@@ -1,6 +1,5 @@
 package org.cloud.controller;
 
-import org.cloud.config.DatabaseConfig;
 import org.cloud.dto.NoticeDTO;
 import org.cloud.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,56 +10,55 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.sql.DataSource;
-
-
 @Controller
-@RequestMapping("/") // localhost8080/notice
+@RequestMapping("/notice")  //localhost:8080/notice
 public class NoticeController {
 
-	private final DatabaseConfig databaseConfig;
-	
 	@Autowired
 	NoticeService noticeService;
 	
-	
-	NoticeController(DatabaseConfig databaseConfig) {
-		this.databaseConfig = databaseConfig;
-	}
-
-	@GetMapping("/notice/list")
-	public String openNoticeList(Model model) throws Exception {
+	@GetMapping("/list")  //localhost:8080/notice/list
+	public String noticeList(Model model) {
 		model.addAttribute("list", noticeService.noticeList());
 		return "noticeList";
 	}
 	
-	@GetMapping("/notice/writeui")
-	public String writeUI() {
-		return "writeUi";
+	@GetMapping("/writeui")
+	public String noticeWriteUI() {
+		return "noticeWrite";
 	}
 	
-	@PostMapping("/notice/write")
-	public String noticeWrite(NoticeDTO notice) throws Exception {
-		noticeService.writeNotice(notice);
+	@PostMapping("/write")
+	public String noticeWrite(NoticeDTO notice) {
+		noticeService.noticeWrite(notice);
 		return "redirect:/notice/list";
 	}
 	
-	@GetMapping("/notice/detail")
-	public String noticeDetail(@RequestParam("id") int id, Model model) throws Exception {
-		NoticeDTO notice = noticeService.noticeDetail(id);
-		model.addAttribute("notice", notice);
-		return "detailNotice";
+	@GetMapping("/detail")
+	public String noticeDetail(@RequestParam("id") int id, Model model) {
+		model.addAttribute("notice", noticeService.noticeDetail(id));
+		return "noticeDetail";
 	}
 	
-	@PostMapping("/notice/update")
-	public String noticeUpdate(NoticeDTO notice) throws Exception {
-		noticeService.updateNotice(notice);
-		return "redirect:/notice/list";
+	@GetMapping("/updateui")
+	public String noticeUpdateUI(@RequestParam("id") int id, Model model) {
+		model.addAttribute("notice", noticeService.noticeDetailNoCnt(id));
+		return "noticeUpdate";
 	}
 	
-	@PostMapping("/notice/delete")
-	public String noticeDelete(@RequestParam("id") int id) throws Exception {
-		noticeService.deleteNotice(id);
+	@PostMapping("/update")
+	public String noticeUpdate(NoticeDTO notice) {
+		noticeService.noticeUpdate(notice);
+		return "redirect:/notice/detail?id=" + notice.getId();
+	}
+	
+	@PostMapping("/delete")
+	public String noticeDelete(@RequestParam("id") int id) {
+		noticeService.noticeDelete(id);
 		return "redirect:/notice/list";
 	}
 }
+
+
+
+
