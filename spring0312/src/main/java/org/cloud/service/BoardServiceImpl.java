@@ -11,13 +11,11 @@ import org.cloud.dto.FileDto;
 import org.cloud.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Service
-@Transactional
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
@@ -25,17 +23,20 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<BoardDto> selectBoardList() throws Exception {
+		// TODO Auto-generated method stub
 		return boardMapper.selectBoardList();
 	}
 	
 	@Override
 	public void insertBoard(BoardDto board, MultipartHttpServletRequest request) throws Exception {
+		// TODO Auto-generated method stub
 		boardMapper.insertBoard(board); 
 		saveFiles(board, request);
 	}
 	
 	@Override
 	public BoardDto selectDetail(int boardId) throws Exception {
+		// TODO Auto-generated method stub
 		boardMapper.updateHitCount(boardId);
 		BoardDto board = boardMapper.selectDetail(boardId);
 		List<FileDto> fileList = boardMapper.selectFileList(boardId);
@@ -45,12 +46,14 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public void updateBoard(BoardDto board, MultipartHttpServletRequest request) throws Exception {
+		// TODO Auto-generated method stub
 		boardMapper.updateBoard(board);
 		saveFiles(board, request);
 	}
 	
 	@Override
 	public void deleteBoard(int boardId) throws Exception {
+		// TODO Auto-generated method stub
 		
 		List<FileDto> fileList = boardMapper.selectFileList(boardId);
 		

@@ -1,6 +1,5 @@
 package org.cloud.controller;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.cloud.dto.BoardDto;
@@ -50,10 +49,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/insertBoard.do") //localhost:8080/board/insertBoard.do
-	public String insertBoard(BoardDto board, MultipartHttpServletRequest multipartHttpServletRequest, Principal principal) throws Exception {
-		if (principal != null) {
-	        board.setCreatorId(principal.getName()); 
-	    }
+	public String insertBoard(BoardDto board, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
 		boardService.insertBoard(board, multipartHttpServletRequest);
 		return "redirect:/board/openBoardList.do";
 	}
@@ -66,29 +62,15 @@ public class BoardController {
 	}
 	
 	@PostMapping("/updateBoard.do")
-	public String updateBoard(BoardDto board, MultipartHttpServletRequest request, Criteria cri, Principal principal) throws Exception {
-		BoardDto detailBoard = boardService.selectDetail(board.getBoardId());
-		if (principal != null && detailBoard.getCreatorId().equals(principal.getName())) {
-			boardService.updateBoard(board, request);
-			return "redirect:/board/openBoardList.do?pageNum=" + cri.getPageNum();
-		} else {
-			return "redirect:/board/openBoardList.do?error=auth";
-		}
-		
+	public String updateBoard(BoardDto board, MultipartHttpServletRequest request, Criteria cri) throws Exception {
+		boardService.updateBoard(board, request);
+		return "redirect:/board/openBoardList.do?pageNum=" + cri.getPageNum();
 	}
 	
 	@PostMapping("/deleteBoard.do")
-	public String deleteBoard(@RequestParam("boardId") int boardId, Principal principal) throws Exception {
-		BoardDto board = boardService.selectDetail(boardId);
-		
-		if (principal != null && board.getCreatorId().equals(principal.getName())) {
-			boardService.deleteBoard(boardId);
-			return "redirect:/board/openBoardList.do";
-		} else {
-			return "redirect:/board/openBoardList.do?error=auth";
-		}
-		
-		
+	public String deleteBoard(@RequestParam("boardId") int boardId) throws Exception {
+		boardService.deleteBoard(boardId);
+		return "redirect:/board/openBoardList.do";
 	}
 	
 	@PostMapping("/deleteFile.do")
